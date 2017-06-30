@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa7fdbe_c0b495f4",
+        "filename": "python-keystone-tests-tempest.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-06-30T08:53:07Z",
+      "side": 1,
+      "message": "I think it\u0027s only BR.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "27c7f4bf0c7d19c1a9d6962f74cf9a5e1f9dfcea",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa7fdbe_80ba8ddf",
+        "filename": "python-keystone-tests-tempest.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-06-30T08:53:07Z",
+      "side": 1,
+      "message": "I think setuptools is only BR.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "27c7f4bf0c7d19c1a9d6962f74cf9a5e1f9dfcea",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa7fdbe_a0a6b1bf",
+        "filename": "python-keystone-tests-tempest.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-06-30T08:53:07Z",
+      "side": 1,
+      "message": "Missing requires for python-requests:\nhttps://github.com/openstack/keystone-tempest-plugin/blob/master/keystone_tempest_plugin/services/identity/v3/saml2_client.py",
+      "revId": "27c7f4bf0c7d19c1a9d6962f74cf9a5e1f9dfcea",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
