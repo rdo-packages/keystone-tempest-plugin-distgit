@@ -39,6 +39,7 @@ BuildRequires:  openstack-macros
 
 Requires:   python-tempest >= 1:12.2.0
 Requires:   python-lxml
+Requires:   python-oslo-config >= 2:3.22.0
 Requires:   python-six
 Requires:   python-testtools
 Requires:   python-requests
