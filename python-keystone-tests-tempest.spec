@@ -1,9 +1,14 @@
+%{!?upstream_version: %global upstream_version %{commit}}
 %global service keystone
 %global plugin keystone-tempest-plugin
 %global module keystone_tempest_plugin
 %global with_doc 1
 
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{!?upstream_version: %global upstream_version %{commit}}
+%global commit fe269f266f5cacf484cb43ca3d5599a37507e932
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -15,13 +20,13 @@ LDAP and federation features. Additionally it provides a plugin to \
 automatically load these tests into Tempest.
 
 Name:       python-%{service}-tests-tempest
-Version:    XXX
-Release:    XXX
+Version:    0.0.1
+Release:    0.1%{?alphatag}%{?dist}
 Summary:    Tempest plugin for the keystone project.
 License:    ASL 2.0
 URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
 
-Source0:    http://tarballs.openstack.org/%{plugin}/%{plugin}-%{upstream_version}.tar.gz
+Source0:    https://github.com/openstack/%{plugin}/archive/%{commit}.tar.gz#/%{plugin}-%{shortcommit}.tar.gz
 
 BuildArch:  noarch
 
@@ -77,7 +82,7 @@ Requires:   python3-requests
 %endif
 
 %prep
-%autosetup -n %{module}-%{upstream_version} -S git
+%autosetup -n %{plugin}-%{upstream_version} -S git
 
 # Let's handle dependencies ourseleves
 %py_req_cleanup
@@ -124,3 +129,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Thu Aug 24 2017 Alfredo Moralejo <amoralej@redhat.com> 0.0.1-0.1.fe269f2git
+- Update to pre-release 0.0.1 (fe269f266f5cacf484cb43ca3d5599a37507e932)
+
