@@ -52,7 +52,7 @@ Requires:   python-requests
 Summary:        python-%{service}-tests-tempest documentation
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 
 %description -n python-%{service}-tests-tempest-doc
 It contains the documentation for the Keystone tempest tests.
@@ -92,7 +92,7 @@ rm -rf %{module}.egg-info
 
 # Generate Docs
 %if 0%{?with_doc}
-%{__python2} setup.py build_sphinx
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
