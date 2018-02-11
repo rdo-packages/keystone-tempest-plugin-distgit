@@ -24,6 +24,8 @@ URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
 Source0:    http://tarballs.openstack.org/%{plugin}/%{plugin}-%{upstream_version}.tar.gz
 
 BuildArch:  noarch
+BuildRequires:  git
+BuildRequires:  openstack-macros
 
 %description
 %{common_desc}
@@ -32,17 +34,19 @@ BuildArch:  noarch
 Summary: %{summary}
 %{?python_provide:%python_provide python2-%{service}-tests-tempest}
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
-BuildRequires:  python-setuptools
-BuildRequires:  git
-BuildRequires:  openstack-macros
+BuildRequires:  python2-pbr
+BuildRequires:  python2-setuptools
 
-Requires:   python-tempest >= 1:12.2.0
+Requires:   python2-tempest >= 1:17.2.0
+%if 0%{?fedora}
+Requires:   python2-lxml
+%else
 Requires:   python-lxml
-Requires:   python-oslo-config >= 2:3.22.0
-Requires:   python-six
-Requires:   python-testtools
-Requires:   python-requests
+%endif
+Requires:   python2-oslo-config >= 2:3.22.0
+Requires:   python2-six => 1.10.0
+Requires:   python2-testtools
+Requires:   python2-requests >= 2.14.2
 
 %description -n python2-%{service}-tests-tempest
 %{common_desc}
@@ -51,8 +55,8 @@ Requires:   python-requests
 %package -n python-%{service}-tests-tempest-doc
 Summary:        python-%{service}-tests-tempest documentation
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
 
 %description -n python-%{service}-tests-tempest-doc
 It contains the documentation for the Keystone tempest tests.
@@ -66,11 +70,12 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 
-Requires:   python3-tempest >= 1:12.2.0
+Requires:   python3-tempest >= 1:17.2.0
 Requires:   python3-lxml
-Requires:   python3-six
+Requires:   python3-oslo-config >= 2:3.22.0
+Requires:   python3-six => 1.10.0
 Requires:   python3-testtools
-Requires:   python3-requests
+Requires:   python3-requests >= 2.14.2
 
 %description -n python3-%{service}-tests-tempest
 %{common_desc}
