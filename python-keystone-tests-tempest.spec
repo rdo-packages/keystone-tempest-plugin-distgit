@@ -3,7 +3,12 @@
 %global module keystone_tempest_plugin
 %global with_doc 1
 
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{!?upstream_version: %global upstream_version %{commit}}
+%global commit 12689f57317ea8aa5a2a85ade2fb6e404bc81c16
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
+
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -15,13 +20,13 @@ LDAP and federation features. Additionally it provides a plugin to \
 automatically load these tests into Tempest.
 
 Name:       python-%{service}-tests-tempest
-Version:    XXX
-Release:    XXX
+Version:    0.0.1
+Release:    0.1%{?alphatag}%{?dist}
 Summary:    Tempest plugin for the keystone project.
 License:    ASL 2.0
 URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
 
-Source0:    http://tarballs.openstack.org/%{plugin}/%{plugin}-%{upstream_version}.tar.gz
+Source0:    http://github.com/openstack/%{plugin}/archive/%{commit}.tar.gz#/%{plugin}-%{shortcommit}.tar.gz
 
 BuildArch:  noarch
 BuildRequires:  git
@@ -129,3 +134,5 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Sat Feb 17 2018 Alfredo Moralejo <chkumar@redhat.com> 0.0.1-0.1.g12689f57it
+- Update to pre-release 0.0.1 (12689f57317ea8aa5a2a85ade2fb6e404bc81c16)
