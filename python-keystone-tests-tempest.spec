@@ -37,7 +37,7 @@ BuildRequires:  python2-devel
 BuildRequires:  python2-pbr
 BuildRequires:  python2-setuptools
 
-Obsoletes: python-keystone-tests < 13.0.0
+Obsoletes: python-keystone-tests < 1:13.0.0
 
 Requires:   python2-tempest >= 1:17.2.0
 %if 0%{?fedora}
