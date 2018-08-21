@@ -39,13 +39,13 @@ BuildRequires:  python2-setuptools
 
 Obsoletes: python-keystone-tests < 1:13.0.0
 
-Requires:   python2-tempest >= 1:17.2.0
+Requires:   python2-tempest >= 1:18.0.0
 %if 0%{?fedora}
 Requires:   python2-lxml
 %else
 Requires:   python-lxml
 %endif
-Requires:   python2-oslo-config >= 2:3.22.0
+Requires:   python2-oslo-config >= 2:5.2.0
 Requires:   python2-six => 1.10.0
 Requires:   python2-testtools
 Requires:   python2-requests >= 2.14.2
@@ -72,9 +72,9 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 
-Requires:   python3-tempest >= 1:17.2.0
+Requires:   python3-tempest >= 1:18.0.0
 Requires:   python3-lxml
-Requires:   python3-oslo-config >= 2:3.22.0
+Requires:   python3-oslo-config >= 2:5.2.0
 Requires:   python3-six => 1.10.0
 Requires:   python3-testtools
 Requires:   python3-requests >= 2.14.2
