@@ -1,0 +1,9 @@
+Code-Review+2: Alfredo Moralejo <amoralej@redhat.com>
+Workflow+1: Alfredo Moralejo <amoralej@redhat.com>
+Code-Review+2: Yatin Karel <ykarel@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Wed, 22 Aug 2018 09:39:55 +0000
+Reviewed-on: https://review.rdoproject.org/r/15792
+Project: openstack/keystone-tempest-plugin-distgit
+Branch: refs/heads/rocky-rdo
