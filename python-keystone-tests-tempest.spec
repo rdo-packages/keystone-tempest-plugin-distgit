@@ -92,3 +92,4 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/keystone-tempest-plugin/commit/?id=fd5ab8adeacb363c30c40fb38a2cf21567d67504
