@@ -44,9 +44,9 @@ BuildRequires:  python-setuptools
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
-Requires:   python-tempest >= 1:12.2.0
+Requires:   python-tempest >= 17.1.0
 Requires:   python-lxml
-Requires:   python-oslo-config >= 2:3.22.0
+Requires:   python-oslo-config >= 5.2.0
 Requires:   python-six
 Requires:   python-testtools
 Requires:   python-requests
