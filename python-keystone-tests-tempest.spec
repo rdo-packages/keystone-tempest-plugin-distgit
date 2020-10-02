@@ -22,8 +22,8 @@ LDAP and federation features. Additionally it provides a plugin to \
 automatically load these tests into Tempest.
 
 Name:       python-%{service}-tests-tempest
-Version:    0.0.1
-Release:    0.1%{?alphatag}%{?dist}
+Version:    0.5.0
+Release:    1%{?alphatag}%{?dist}
 Summary:    Tempest plugin for the keystone project.
 License:    ASL 2.0
 URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
@@ -131,6 +131,9 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Fri Oct 02 2020 RDO <dev@lists.rdoproject.org> 0.5.0-1.fe269f2git
+- Update to 0.5.0
+
 * Thu Aug 24 2017 Alfredo Moralejo <amoralej@redhat.com> 0.0.1-0.1.fe269f2git
 - Update to pre-release 0.0.1 (fe269f266f5cacf484cb43ca3d5599a37507e932)
 
