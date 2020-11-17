@@ -41,7 +41,7 @@ Summary: %{summary}
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  openstack-macros
 
 Requires:   python-tempest >= 1:12.2.0
