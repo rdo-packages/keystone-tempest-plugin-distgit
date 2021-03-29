@@ -54,6 +54,7 @@ Requires:   python3-testtools
 Requires:   python3-requests >= 2.14.2
 
 Requires:   python3-lxml
+Requires:   python3-pbr >= 2.0.0
 
 %description -n python3-%{service}-tests-tempest
 %{common_desc}
