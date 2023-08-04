@@ -6,6 +6,12 @@
 %global with_doc 1
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate
+# Exclude sphinx from BRs if docs are disabled
+%if ! 0%{?with_doc}
+%global excluded_brs %{excluded_brs} sphinx openstackdocstheme
+%endif
 
 %global common_desc \
 This package contains Tempest plugin for functional testing of keystone \
@@ -16,7 +22,7 @@ Name:       python-%{service}-tests-tempest
 Version:    XXX
 Release:    XXX
 Summary:    Tempest plugin for the keystone project.
-License:    ASL 2.0
+License:    Apache-2.0
 URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
 
 Source0:    http://tarballs.openstack.org/%{plugin}/%{module}-%{upstream_version}.tar.gz
@@ -40,20 +46,8 @@ BuildRequires:  openstack-macros
 
 %package -n python3-%{service}-tests-tempest
 Summary: %{summary}
-%{?python_provide:%python_provide python3-%{service}-tests-tempest}
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-
-Obsoletes: python-keystone-tests < 1:13.0.0
-
-Requires:   python3-tempest >= 1:18.0.0
-Requires:   python3-oslo-config >= 2:5.2.0
-Requires:   python3-six => 1.10.0
-Requires:   python3-testtools
-Requires:   python3-requests >= 2.14.2
-
-Requires:   python3-lxml
+BuildRequires:  pyproject-rpm-macros
 
 %description -n python3-%{service}-tests-tempest
 %{common_desc}
@@ -61,10 +55,6 @@ Requires:   python3-lxml
 %if 0%{?with_doc}
 %package -n python3-%{service}-tests-tempest-doc
 Summary:        python-%{service}-tests-tempest documentation
-%{?python_provide:%python_provide python3-%{service}-tests-tempest-doc}
-
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-openstackdocstheme
 
 %description -n python3-%{service}-tests-tempest-doc
 It contains the documentation for the Keystone tempest tests.
@@ -77,29 +67,47 @@ It contains the documentation for the Keystone tempest tests.
 %endif
 %autosetup -n %{module}-%{upstream_version} -S git
 
-# Let's handle dependencies ourseleves
-%py_req_cleanup
-# Remove bundled egg-ingo
-rm -rf %{module}.egg-info
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Automatic BR generation
+%generate_buildrequires
+%if 0%{?with_doc}
+  %pyproject_buildrequires -t -e docs
+%else
+  %pyproject_buildrequires -R
+%endif
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 # Generate Docs
 %if 0%{?with_doc}
-sphinx-build -W -b html doc/source doc/build/html
+%tox -e docs
 # remove the sphinx build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %install
-%{py3_install}
+%pyproject_install
 
 %files -n python3-%{service}-tests-tempest
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{module}
-%{python3_sitelib}/*.egg-info
+%{python3_sitelib}/*.dist-info
 
 %if 0%{?with_doc}
 %files -n python3-%{service}-tests-tempest-doc
