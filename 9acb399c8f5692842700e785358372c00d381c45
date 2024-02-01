@@ -1,0 +1,8 @@
+Workflow+1: Joel Capitao <jcapitao@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Code-Review+2: Joel Capitao <jcapitao@redhat.com>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Thu, 01 Feb 2024 06:21:51 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/keystone-tempest-plugin-distgit/+/51510
+Project: openstack/keystone-tempest-plugin-distgit
+Branch: refs/heads/xena-rdo
