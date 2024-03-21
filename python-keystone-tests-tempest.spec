@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318
 %global service keystone
 %global plugin keystone-tempest-plugin
 %global module keystone_tempest_plugin
@@ -19,8 +19,8 @@ LDAP and federation features. Additionally it provides a plugin to \
 automatically load these tests into Tempest.
 
 Name:       python-%{service}-tests-tempest
-Version:    XXX
-Release:    XXX
+Version:    0.14.0
+Release:    1%{?dist}
 Summary:    Tempest plugin for the keystone project.
 License:    Apache-2.0
 URL:        https://git.openstack.org/cgit/openstack/%{plugin}/
@@ -116,4 +116,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Thu Mar 21 2024 RDO <dev@lists.rdoproject.org> 0.14.0-1
+- Update to 0.14.0
+
 
